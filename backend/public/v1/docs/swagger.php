@@ -2,7 +2,7 @@
 
 require __DIR__.'/../../../vendor/autoload.php';
 
-define('BASE_URL', 'http://localhost/webprojectPowder.ba/webPowder.ba/backend/');
+define('BASE_URL', 'http://localhost/Powder.ba/backend/');
 
 error_reporting(0);
 

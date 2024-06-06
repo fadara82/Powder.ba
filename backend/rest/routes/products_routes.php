@@ -15,6 +15,9 @@ Flight::route('POST /products', function () {
      *      path="/products/",
      *      tags={"products"},
      *      summary="Add products data to the database",
+     * security={
+     *          {"ApiKey": {}}   
+     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Products Data"
@@ -46,6 +49,9 @@ Flight::route('GET /products/get', function () {
  *      path="/products/get",
  *      tags={"products"},
  *      summary="Get all products",
+ * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Response(
  *           response=200,
  *           description="Array of all doctors in the databases"
@@ -66,6 +72,9 @@ Flight::route('GET /products/get/protein', function () {
  *      path="/products/get/protein",
  *      tags={"products"},
  *      summary="Get products that are protein",
+ * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Response(
  *           response=200,
  *           description="Array of all products that are Protein in the databases"
@@ -85,6 +94,9 @@ Flight::route('GET /products/get/vitamini', function () {
  *      path="/products/get/vitamini",
  *      tags={"products"},
  *      summary="Get products that are Vitamins",
+ * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Response(
  *           response=200,
  *           description="Array of all products that are Vitamins in the databases"
@@ -106,6 +118,9 @@ Flight::route('GET /products/get/creatine', function () {
  *      path="/products/get/creatine",
  *      tags={"products"},
  *      summary="Get products that are Creatine",
+ * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Response(
  *           response=200,
  *           description="Array of all products that are Creatine in the databases"
@@ -128,6 +143,9 @@ Flight::route('GET /products/get/healthybar', function () {
  *      path="/products/get/healthybar",
  *      tags={"products"},
  *      summary="Get products that are Healthy Bars",
+ * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Response(
  *           response=200,
  *           description="Array of all products that are Healthy Bars in the databases"
@@ -151,6 +169,9 @@ Flight::route('GET /products/get/byid', function () {
      *      path="/products/get/byid",
      *      tags={"products"},
      *      summary="Get product by id",
+     * security={
+     *          {"ApiKey": {}}   
+     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Product data, or false if product does not exist"
@@ -167,15 +188,15 @@ Flight::route('GET /products/get/byid', function () {
 });
 
 
-Flight::route('GET /products/update/byid', function () {
+Flight::route('PUT /products/update/@id', function ($id) {
+            $payload = Flight::request()->data->getData();
+            $json=json_encode($payload);
+            Flight::json($json);
+            return;
 
-// NISAM USPIO
    
+        Flight::json(Flight::get("products_service")->get_byid($id,$json));
 
-
-    $payload = Flight::request()->query['id'];
-    $data = Flight::get("products_service")->get_byid($payload);
-        Flight::json($data, 200);
     
 });
 
@@ -192,6 +213,9 @@ Flight::route('DELETE /products/delete/byid', function () {
      *      path="/products/delete/byid",
      *      tags={"products"},
      *      summary="Delete product by id",
+     * security={
+     *          {"ApiKey": {}}   
+     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Deleted product data or 500 status code exception otherwise"
@@ -213,6 +237,9 @@ Flight::route('GET /products/get/cart', function () {
  *      path="/products/get/cart",
  *      tags={"products"},
  *      summary="Get products that are in Cart",
+ * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Response(
  *           response=200,
  *           description="Array of all products that are in Cart in the databases"

@@ -20,7 +20,7 @@ Flight::route("/*",function(){
             
             
             Flight::set('user',$decoded_token->user);
-            Flight::set('jwt_token',$token);
+             Flight::set('jwt_token',$token);
 
            return true;
         } catch (\Exception $e) {

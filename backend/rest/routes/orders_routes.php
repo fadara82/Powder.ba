@@ -13,6 +13,9 @@ Flight::route('POST /orders', function () {
      *      path="/orders/",
      *      tags={"orders"},
      *      summary="Add orders data to the database",
+     * security={
+     *          {"ApiKey": {}}   
+     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Orders Data"
@@ -49,6 +52,9 @@ Flight::route('GET /orders/get', function () {
  *      path="/orders/get",
  *      tags={"orders"},
  *      summary="Get all orders",
+ * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Response(
  *           response=200,
  *           description="Array of all orders in the databases"
@@ -68,6 +74,9 @@ Flight::route('DELETE /orders/delete/byid', function () {
      *      path="/orders/delete/byid/",
      *      tags={"orders"},
      *      summary="Delete order by id",
+     * security={
+     *          {"ApiKey": {}}   
+     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Deleted order data or 500 status code exception otherwise"
@@ -93,10 +102,14 @@ Flight::route('UPDATE /orders/update/byid', function () {
  *      path="/orders/update/byid/",
  *      tags={"orders"},
  *      summary="Update order by id",
+ * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Response(
  *           response=200,
  *           description="Updated order data or 500 status code exception otherwise"
  *      ),
+ * 
  *      @OA\Parameter(
  *           name="id",
  *           in="path",

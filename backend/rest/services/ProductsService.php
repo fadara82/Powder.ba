@@ -52,10 +52,10 @@ class ProductsService{
 
     }
 
-    // public function update_byid($id){
-    //     return $this->product_dao->update_byid($id);
+     public function updatep_byid($id,$product){
+    return $this->product_dao->updatep_byid($id,$product);
+   }
 
-    // }
   public function updateCart($id){
     return $this->product_dao->updateCart($id);
  }

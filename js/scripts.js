@@ -9,7 +9,7 @@ $(document).ready(function () {
     "http://127.0.0.1:5500/index.html#shopitem" ||
     "http://127.0.0.1:5500/index.html#shopingcart" ||
     "http://127.0.0.1:5500/#main" ||
-    "http://localhost/webprojectPowder.ba/webPowder.ba/#main"
+    "http://localhost/Powder.ba/#main"
   ) {
     $("#homeNav").show();
   } else {
@@ -27,7 +27,7 @@ var usert = JSON.parse(window.localStorage.getItem("user"));
 function addToCart(id) {
   if (confirm("Are you sure you want to add to cart?")) {
     $.ajax({
-      url: `http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/update/cart/byid?id=${id}`,
+      url: `http://localhost/Powder.ba/backend/products/update/cart/byid?id=${id}`,
       method: "UPDATE",
       headers: {
         Authentication: JSON.parse(usert).data.token,
@@ -48,7 +48,7 @@ function addToCart(id) {
 function deleteCart(id) {
   if (confirm("Are you sure you want to add to cart?")) {
     $.ajax({
-      url: `http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/updated/cart/byid?id=${id}`,
+      url: `http://localhost/Powder.ba/backend/products/updated/cart/byid?id=${id}`,
       method: "UPDATE",
       headers: {
         Authentication: JSON.parse(usert).data.token,
@@ -68,7 +68,7 @@ function deleteCart(id) {
 
 $(document).ready(function () {
   $.ajax({
-    url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/get",
+    url: "http://localhost/Powder.ba/backend/products/get",
     method: "GET",
     dataType: "json",
     headers: {
@@ -123,7 +123,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $.ajax({
-    url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/orders/get",
+    url: "http://localhost/Powder.ba/backend/orders/get",
     method: "GET",
     headers: {
       Authentication: JSON.parse(usert).data.token,
@@ -148,13 +148,12 @@ $(document).ready(function () {
           <td>${item.address}</td>
           <td>${item.status}</td>
 
-        
         <td>
             <button id="#check" onclick="updateOrder(${item.id})">✔️</button>
             <button id="#remove" onclick="deleteO(${item.id})">🗑️</button>
           </td>
           </tr>
-        
+
         `;
 
         $("#tabeladiv").append(htmlt);
@@ -180,7 +179,7 @@ function green() {
 
 $(document).ready(function () {
   $.ajax({
-    url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/users/get",
+    url: "http://localhost/Powder.ba/backend/users/get",
     method: "GET",
     headers: {
       Authentication: JSON.parse(usert).data.token,
@@ -203,10 +202,10 @@ $(document).ready(function () {
           <td>${item.mobile_number}</td>
         <td>
             <button id="#remove1" onclick="deleteUsers(${item.id})">🗑️</button>
-          
+
           </td>
           </tr>
-        
+
         `;
 
         $("#usersdiv").append(htmlt);
@@ -219,7 +218,7 @@ $(document).ready(function () {
   var totalprice = 0;
 
   $.ajax({
-    url: `http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/get/cart`,
+    url: `http://localhost/Powder.ba/backend/products/get/cart`,
     method: "GET",
     headers: {
       Authentication: JSON.parse(usert).data.token,
@@ -243,8 +242,7 @@ $(document).ready(function () {
               <h6 class="text-muted">${item.category}</h6>
               <h6 class="text-black mb-0">${item.productName}</h6>
             </div>
-          
-            
+
             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
               <h6 id="${item.productName}"class="total-price mb-0">${price} BAM</h6> <!-- Using the 'price' variable here -->
             </div>
@@ -288,7 +286,7 @@ $(document).ready(function () {
 function getId(id) {
   console.log(id);
   $.ajax({
-    url: `http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/get/byid?id=${id}`,
+    url: `http://localhost/Powder.ba/backend/products/get/byid?id=${id}`,
     method: "GET",
     headers: {
       Authentication: JSON.parse(usert).data.token,
@@ -332,7 +330,7 @@ function getId(id) {
               </button>
             </div>
           </div>
-                <a href="#main">Back to Shop</a>  
+                <a href="#main">Back to Shop</a>
           `;
       $("#shopitemdiv").empty().append(html);
     },
@@ -380,7 +378,7 @@ $(document).ready(function () {
       console.log(formData);
 
       $.ajax({
-        url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/orders",
+        url: "http://localhost/Powder.ba/backend/orders",
         method: "POST",
         data: formData,
         headers: {
@@ -416,7 +414,7 @@ $(document).ready(function () {
       console.log(formData);
 
       $.ajax({
-        url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/products",
+        url: "http://localhost/Powder.ba/backend/products",
         method: "POST",
         data: formData,
         headers: {
@@ -493,7 +491,7 @@ $(document).ready(function () {
       var formData = $(form).serialize();
 
       $.ajax({
-        url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/users",
+        url: "http://localhost/Powder.ba/backend/users",
         method: "POST",
         data: formData,
 
@@ -512,7 +510,7 @@ $(document).ready(function () {
 
 function getProteini() {
   $.ajax({
-    url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/get/protein",
+    url: "http://localhost/Powder.ba/backend/products/get/protein",
     method: "GET",
     dataType: "json",
     headers: {
@@ -567,7 +565,7 @@ function getProteini() {
 
 function getVitamini() {
   $.ajax({
-    url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/get/vitamini",
+    url: "http://localhost/Powder.ba/backend/products/get/vitamini",
     method: "GET",
     dataType: "json",
     headers: {
@@ -622,7 +620,7 @@ function getVitamini() {
 
 function getKreatin() {
   $.ajax({
-    url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/get/creatine",
+    url: "http://localhost/Powder.ba/backend/products/get/creatine",
     method: "GET",
     headers: {
       Authentication: JSON.parse(usert).data.token,
@@ -676,7 +674,7 @@ function getKreatin() {
 
 function getCokoladice() {
   $.ajax({
-    url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/get/healthybar",
+    url: "http://localhost/Powder.ba/backend/products/get/healthybar",
     method: "GET",
     dataType: "json",
     headers: {
@@ -749,15 +747,14 @@ $(document).ready(function () {
       console.log(formData);
 
       $.ajax({
-        url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/login",
+        url: "http://localhost/Powder.ba/backend/login",
         method: "POST",
         data: formData,
 
         success: function (response) {
           Utilis.set_to_localstorage("user", response);
           console.log("Login Succesfull:", response);
-          window.location =
-            "http://localhost/webprojectPowder.ba/webPowder.ba/#main";
+          window.location = "http://localhost/Powder.ba/#main";
         },
         error: function (xhr, status, error) {
           console.error("Error sending form data:", error);
@@ -772,13 +769,13 @@ function logout() {
 }
 
 if (!Utilis.get_from_localstorage("user")) {
-  window.location = "http://localhost/webprojectPowder.ba/webPowder.ba/#login";
+  window.location = "http://localhost/Powder.ba/#login";
 }
 
 function deleteP(id) {
   if (confirm("Are you sure you want to delete?")) {
     $.ajax({
-      url: `http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/delete/byid?id=${id}`,
+      url: `http://localhost/Powder.ba/backend/products/delete/byid?id=${id}`,
       method: "DELETE",
       headers: {
         Authentication: JSON.parse(usert).data.token,
@@ -801,7 +798,7 @@ function deleteP(id) {
 function deleteO(id) {
   if (confirm("Are you sure you want to delete?")) {
     $.ajax({
-      url: `http://localhost/webprojectPowder.ba/webPowder.ba/backend/orders/delete/byid?id=${id}`,
+      url: `http://localhost/Powder.ba/backend/orders/delete/byid?id=${id}`,
       method: "DELETE",
       headers: {
         Authentication: JSON.parse(usert).data.token,
@@ -824,7 +821,7 @@ function deleteO(id) {
 function updateOrder(id) {
   if (confirm("Are you sure you want to update order?")) {
     $.ajax({
-      url: `http://localhost/webprojectPowder.ba/webPowder.ba/backend/orders/update/byid?id=${id}`,
+      url: `http://localhost/Powder.ba/backend/orders/update/byid?id=${id}`,
       method: "UPDATE",
       headers: {
         Authentication: JSON.parse(usert).data.token,
@@ -847,7 +844,7 @@ function updateOrder(id) {
 function deleteUsers(id) {
   if (confirm("Are you sure you want to delete order?")) {
     $.ajax({
-      url: `http://localhost/webprojectPowder.ba/webPowder.ba/backend/users/delete/byid?id=${id}`,
+      url: `http://localhost/Powder.ba/backend/users/delete/byid?id=${id}`,
       method: "DELETE",
       headers: {
         Authentication: JSON.parse(usert).data.token,
@@ -870,7 +867,7 @@ function deleteUsers(id) {
 function editProduct(id) {
   console.log(id);
   $.ajax({
-    url: `http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/update/byid?id=${id}`,
+    url: `http://localhost/Powder.ba/backend/products/get/byid?id=${id}`,
     method: "GET",
     headers: {
       Authentication: JSON.parse(usert).data.token,
@@ -956,8 +953,8 @@ function editProduct(id) {
             console.log(formData);
 
             $.ajax({
-              url: "http://localhost/webprojectPowder.ba/webPowder.ba/backend/products/update",
-              method: "UPDATE",
+              url: `http://localhost/Powder.ba/backend/products/update/${id}`,
+              method: "PUT",
               data: formData,
               headers: {
                 Authentication: JSON.parse(usert).data.token,
