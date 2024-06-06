@@ -436,6 +436,7 @@ $(document).ready(function () {
         },
         success: function (response) {
           console.log("Form data sent successfully:", response);
+          location.reload();
         },
         error: function (xhr, status, error) {
           console.error("Error sending form data:", error);
@@ -575,7 +576,7 @@ function getVitamini() {
     method: "GET",
     dataType: "json",
     headers: {
-      Authentication: Utilis.get_from_localstorage(usert).token,
+      Authentication: JSON.parse(usert).data.token,
     },
     beforeSend: function (xhr) {
       if (Utilis.get_from_localstorage("user")) {
@@ -590,7 +591,7 @@ function getVitamini() {
         let html = `<div class="col mb-5" id="div1">
           <div class="card h-100">
             <div class="edit" style="display: flex; align-items: center; justify-content: space-between;">
-              <button onclick="editProduct(${item.id})">✏️</button> <button onclick="showModal()">🗑️</button>
+              <button onclick="editProduct(${item.id})">✏️</button> <button  onclick="deleteP(${item.id})" >🗑️</button>
             </div>
             <a href="#shopitem">
               <img class="card-img-top slika" src="${item.productImg}" alt="..." onClick="getId(${item.id})" />
@@ -606,7 +607,7 @@ function getVitamini() {
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="#" onclick="addToCart()">Add to cart</a>
+                <a class="btn btn-outline-dark mt-auto" onclick="addToCart(${item.id})">Add to cart</a>
               </div>
             </div>
           </div>
@@ -628,6 +629,7 @@ function getKreatin() {
   $.ajax({
     url: "http://localhost/Powder.ba/backend/products/get/creatine",
     method: "GET",
+    dataType: "json",
     headers: {
       Authentication: JSON.parse(usert).data.token,
     },
@@ -644,7 +646,7 @@ function getKreatin() {
         let html = `<div class="col mb-5" id="div1">
           <div class="card h-100">
             <div class="edit" style="display: flex; align-items: center; justify-content: space-between;">
-              <button onclick="editProduct(${item.id})">✏️</button> <button onclick="showModal()">🗑️</button>
+              <button onclick="editProduct(${item.id})">✏️</button> <button  onclick="deleteP(${item.id})" >🗑️</button>
             </div>
             <a href="#shopitem">
               <img class="card-img-top slika" src="${item.productImg}" alt="..." onClick="getId(${item.id})" />
@@ -660,7 +662,7 @@ function getKreatin() {
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="#" onclick="addToCart()">Add to cart</a>
+                <a class="btn btn-outline-dark mt-auto" onclick="addToCart(${item.id})">Add to cart</a>
               </div>
             </div>
           </div>
@@ -699,7 +701,7 @@ function getCokoladice() {
         let html = `<div class="col mb-5" id="div1">
           <div class="card h-100">
             <div class="edit" style="display: flex; align-items: center; justify-content: space-between;">
-              <button onclick="editProduct(${item.id})">✏️</button> <button onclick="showModal()">🗑️</button>
+              <button onclick="editProduct(${item.id})">✏️</button> <button  onclick="deleteP(${item.id})" >🗑️</button>
             </div>
             <a href="#shopitem">
               <img class="card-img-top slika" src="${item.productImg}" alt="..." onClick="getId(${item.id})" />
@@ -715,7 +717,7 @@ function getCokoladice() {
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="#" onclick="addToCart()">Add to cart</a>
+                <a class="btn btn-outline-dark mt-auto" onclick="addToCart(${item.id})">Add to cart</a>
               </div>
             </div>
           </div>
@@ -732,7 +734,6 @@ function getCokoladice() {
     },
   });
 }
-
 $(document).ready(function () {
   $("#loginform").validate({
     rules: {
