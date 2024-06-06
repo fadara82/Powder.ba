@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="http://localhost/webprojectPowder.ba/webPowder.ba/css/registration.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70.0-2014.11.23/jquery.blockUI.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+          <div
+            class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden"
+          >
+            <div class="card-img-left d-none d-md-flex">
+              <!-- Background image for card set in CSS! -->
+            </div>
+            <div class="card-body p-4 p-sm-5">
+              <h5 class="card-title text-center mb-5 fw-light fs-5">
+                Register
+              </h5>
+              <form id="regform">
+                <div class="form-floating mb-3">
+                  <label for="floatingInputName">First Name</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="floatingInputUsername"
+                    placeholder="First Name"
+                    name="fname"
+                  />
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="floatingInputUserlname">Last Name</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="floatingInputUserlname"
+                    placeholder="Last Name"
+                    name="lname"
+                  />
+                </div>
+                <label for="floatingInputEmail">Email address</label>
+
+                <div class="form-floating mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="floatingInputEmail"
+                    placeholder="name@example.com"
+                    name="email"
+                  />
+                </div>
+                <label for="mobilenumber">Mobile Number</label>
+
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="mobilenumber"
+                    placeholder="Mobilenumber"
+                    name="mobilenumber"
+                  />
+                </div>
+                <label for="floatingPassword">Confirm Password</label>
+
+                <div class="form-floating mb-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="floatingPassword"
+                    placeholder="Password"
+                    name="password"
+                  />
+                </div>
+                <label for="floatingPasswordConfirm">Confirm Password</label>
+
+                <div class="form-floating mb-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="floatingPasswordConfirm"
+                    placeholder="Confirm Password"
+                    name="cpassword"
+                  />
+                </div>
+
+                <div class="d-grid mb-2">
+                  <button
+                    class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
+                    type="submit"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
+
+              <a class="d-block text-center mt-2 small" href=""
+                >Have an account? Sign In</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="http://localhost/webprojectPowder.ba/webPowder.ba/js/scripts.js"></script>
+    <script src="http://localhost/webprojectPowder.ba/webPowder.ba/js/utilis.js"></script>
+  </body>
+</html>
