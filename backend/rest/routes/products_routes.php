@@ -64,7 +64,7 @@ Flight::route('GET /products/get', function () {
     
 });
 
-Flight::route('GET /products/get/protein', function () {
+Flight::route('GET /products/get/proteini', function () {
 
 
         /**
@@ -188,17 +188,17 @@ Flight::route('GET /products/get/byid', function () {
 });
 
 
-Flight::route('PUT /products/update/@id', function ($id) {
-            $payload = Flight::request()->data->getData();
-            $json=json_encode($payload);
-            Flight::json($json);
-            return;
+// Flight::route('PUT /products/update/@id', function ($id) {
+//             $payload = Flight::request()->data->getData();
+//             $json=json_encode($payload);
+//             Flight::json($json);
+//             return;
 
    
-        Flight::json(Flight::get("products_service")->get_byid($id,$json));
+//         Flight::json(Flight::get("products_service")->get_byid($id,$json));
 
     
-});
+// });
 
 
 
@@ -265,6 +265,9 @@ Flight::route('UPDATE /products/update/cart/byid', function () {
  *           response=200,
  *           description="Updated product data or 500 status code exception otherwise"
  *      ),
+ * * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Parameter(
  *           name="id",
  *           in="path",
@@ -292,6 +295,9 @@ Flight::route('UPDATE /products/updated/cart/byid', function () {
  *           response=200,
  *           description="Updated product data or 500 status code exception otherwise"
  *      ),
+ * * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Parameter(
  *           name="id",
  *           in="path",

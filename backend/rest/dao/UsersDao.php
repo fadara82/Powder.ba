@@ -10,35 +10,29 @@ class UsersDao extends BaseDao{
         parent :: __construct("users");
         }
 
-        public function add_users($user){
+        public function add_users($user) {
+    $sql = "INSERT INTO users(first_name, last_name, email, mobile_number, password)
+            VALUES(:first_name, :last_name, :email, :mobile_number, :password)";
 
-            $sql="INSERT INTO users(first_name,last_name,email,mobile_number,password)
-            VALUES(:first_name,:last_name,:email,:mobile_number,:password)";
+    try {
+        // Hash the user's password
+        $hashed_password = password_hash($user['password'], PASSWORD_DEFAULT);
 
+        $statement = $this->connection->prepare($sql);
+        $statement->bindValue(':first_name', $user['fname']);
+        $statement->bindValue(':last_name', $user['lname']);
+        $statement->bindValue(':email', $user['email']);
+        $statement->bindValue(':mobile_number', $user['mobilenumber']);
+        $statement->bindValue(':password', $hashed_password);
 
-            try{
-                $statement=$this->connection->prepare($sql);
-                $statement->bindValue(':first_name', $user['fname']);      
-                $statement->bindValue(':last_name', $user['lname']);       
-                $statement->bindValue(':email', $user['email']);                
-                $statement->bindValue(':mobile_number', $user['mobilenumber']);
-                $statement->bindValue(':password', $user['password']);
+        $statement->execute();
+        return $user;
 
-                $statement->execute();
-                return $user;
-
-
-
-            }
-            catch (PDOException $e) {
-            error_log('Error adding order: ' . $e->getMessage());
-            throw new Exception('Failed to add order');
-        }
-
-
-
-        }
-
+    } catch (PDOException $e) {
+        error_log('Error adding user: ' . $e->getMessage());
+        throw new Exception('Failed to add user');
+    }
+}
 
          public function get_users(){
     $sql = "SELECT * FROM users";

@@ -1,20 +1,26 @@
 $(document).ready(function () {
   // Hide all elements initially
-  $("#homeNav").hide();
+  $("#homeNav").show();
+  $("#adminP").hide();
   $("#exampleModale").hide();
   $("#exampleModal").hide();
 
+  // Correct URL comparison
+  if (window.location.href == "http://localhost/Powder.ba/#login") {
+    $("#adminP").hide();
+    $("#homeNav").hide();
+  }
+
   if (
-    window.location == "http://127.0.0.1:5500/index.html#main" ||
-    "http://127.0.0.1:5500/index.html#shopitem" ||
-    "http://127.0.0.1:5500/index.html#shopingcart" ||
-    "http://127.0.0.1:5500/#main" ||
-    "http://localhost/Powder.ba/#main"
+    window.location.href == "http://localhost/Powder.ba/#admin" ||
+    window.location.href == "http://localhost/Powder.ba/#orders" ||
+    window.location.href == "http://localhost/Powder.ba/#users"
   ) {
-    $("#homeNav").show();
-  } else {
     $("#adminP").show();
     $("#homeNav").hide();
+  } else {
+    $("#adminP").hide();
+    $("#homeNav").show();
   }
 });
 
@@ -510,11 +516,11 @@ $(document).ready(function () {
 
 function getProteini() {
   $.ajax({
-    url: "http://localhost/Powder.ba/backend/products/get/protein",
+    url: "http://localhost/Powder.ba/backend/products/get/proteini",
     method: "GET",
     dataType: "json",
     headers: {
-      Authentication: Utilis.get_from_localstorage(usert).token,
+      Authentication: JSON.parse(usert).data.token,
     },
     beforeSend: function (xhr) {
       if (Utilis.get_from_localstorage("user")) {
@@ -529,7 +535,7 @@ function getProteini() {
         let html = `<div class="col mb-5" id="div1">
           <div class="card h-100">
             <div class="edit" style="display: flex; align-items: center; justify-content: space-between;">
-              <button onclick="editProduct(${item.id})">✏️</button> <button  onClick="getId(${item.id})>🗑️</button>
+              <button onclick="editProduct(${item.id})">✏️</button> <button  onclick="deleteP(${item.id})" >🗑️</button>
             </div>
             <a href="#shopitem">
               <img class="card-img-top slika" src="${item.productImg}" alt="..." onClick="getId(${item.id})" />
@@ -545,7 +551,7 @@ function getProteini() {
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="#" onclick="addToCart()">Add to cart</a>
+                <a class="btn btn-outline-dark mt-auto" onclick="addToCart(${item.id})">Add to cart</a>
               </div>
             </div>
           </div>

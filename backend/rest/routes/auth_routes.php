@@ -21,6 +21,9 @@ Flight::route('POST /login', function () {
      *           response=200,
      *           description="Users Login Data"
      *      ),
+     * * security={
+     *          {"ApiKey": {}}   
+     *      },
      *      @OA\RequestBody(
      *          description="Login Payload",
      *          @OA\JsonContent(

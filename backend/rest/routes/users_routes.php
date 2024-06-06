@@ -21,6 +21,9 @@ Flight::route('POST /users', function () {
      *           response=200,
      *           description="Users Data"
      *      ),
+     * * security={
+     *          {"ApiKey": {}}   
+     *      },
      *      @OA\RequestBody(
      *          description="Users data payload",
      *          @OA\JsonContent(
@@ -49,6 +52,9 @@ Flight::route('GET /users/get', function () {
  *      path="/users/get",
  *      tags={"users"},
  *      summary="Get all users",
+ * * security={
+     *          {"ApiKey": {}}   
+     *      },
  *      @OA\Response(
  *           response=200,
  *           description="Array of all users in the databases"
@@ -68,6 +74,9 @@ Flight::route('DELETE /users/delete/byid', function () {
      *      path="/users/delete/byid/",
      *      tags={"users"},
      *      summary="Delete user by id",
+     * * security={
+     *          {"ApiKey": {}}   
+     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Deleted user data or 500 status code exception otherwise"
